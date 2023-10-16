@@ -63,7 +63,7 @@ variable "internet_contract" {
   default = "internet-access" 
 }
 
-# VNet2 EPG (Single ASG, Network Centric)
+# VNet2 EPG
 
 variable "vnet2_ap" {
   default = "vnet2-ap"

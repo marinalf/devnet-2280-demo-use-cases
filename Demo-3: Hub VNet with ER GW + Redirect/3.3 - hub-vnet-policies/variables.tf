@@ -12,8 +12,6 @@ variable "services_ap" {
   default = "services-ap"
 }
 
-# Hub VNet variables for L4-L7 (Firewall)
-
 variable "fw_mgmt_epg" {
   default = "fw-mgmt-epg"
 }
