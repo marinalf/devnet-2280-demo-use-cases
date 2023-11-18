@@ -18,16 +18,12 @@ resource "aci_cloud_external_epg" "er_epg" {
   relation_fv_rs_cons_if          = [data.aci_imported_contract.onprem_to_cloud.id] # To be enabled only after the contract is imported from workload tenant.
 }
 
-resource "aci_cloud_endpoint_selectorfor_external_epgs" "ext_subnet1" {
+resource "aci_cloud_endpoint_selectorfor_external_epgs" "onprem_subnets" {
+  for_each              = var.onprem_subnets
   cloud_external_epg_dn = aci_cloud_external_epg.er_epg.id
-  name                  = var.er_subnet1_name
-  subnet                = var.er_subnet1
-}
+  name                  = each.value.name
+  subnet                = each.value.subnet
 
-resource "aci_cloud_endpoint_selectorfor_external_epgs" "ext_subnet2" {
-  cloud_external_epg_dn = aci_cloud_external_epg.er_epg.id
-  name                  = var.er_subnet2_name
-  subnet                = var.er_subnet2
 }
 
 # ER Contract on Infra Tenant for Cloud to On-prem connectivity

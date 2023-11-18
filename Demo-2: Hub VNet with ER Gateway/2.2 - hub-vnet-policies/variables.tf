@@ -20,20 +20,21 @@ variable "er_epg" {
   default = "er-gateway-epg"
 }
 
-variable "er_subnet1_name" {
-  default = "on-prem-subnets1"
-}
-
-variable "er_subnet2_name" {
-  default = "on-prem-subnets2"
-}
-
-variable "er_subnet1" {
-  default = "172.150.0.0/24"
-}
-
-variable "er_subnet2" {
-  default = "172.151.0.0/24"
+variable "onprem_subnets" {
+  type = map(object({
+    name = string
+    subnet = string
+  }))
+  default = {
+    subnet1 = {
+      name = "on-prem-subnets1"
+      subnet   = "172.150.0.0/24"
+    },
+    subnet2 = {
+      name = "on-prem-subnets2"
+      subnet   = "172.151.0.0/24"
+    }
+  }
 }
 
 variable "er_contract_cloud_to_onprem" {
