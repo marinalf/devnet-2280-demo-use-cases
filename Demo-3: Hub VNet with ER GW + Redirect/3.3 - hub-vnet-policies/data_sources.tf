@@ -49,3 +49,8 @@ data "aci_cloud_subnet" "fw_nlb_subnet" {
   ip                 = "12.1.3.0/24"
 }
 
+# Data Sources used for Service Graph
+
+data "aci_tenant" "tenant1" {
+  name = var.tenant_name
+}

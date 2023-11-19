@@ -43,3 +43,13 @@ variable "fw_nlb_name" {
 variable "hub_services_cidr" {
   default = "12.1.0.0/21"
 }
+
+# Service Graph
+
+variable "tenant_name" {
+  default = "devnet"
+}
+
+variable "fw_sg" {
+  default = "pa-fw-sg"
+}

@@ -70,4 +70,31 @@ resource "aci_cloud_l4_l7_native_load_balancer" "fw_nlb" {
   cloud_l4l7_load_balancer_type          = "network"
 }
 
+/*
+
+Waiting on https://github.com/CiscoDevNet/terraform-provider-aci/issues/1130
+
 # Create Service Graph for FW and NLB
+
+resource "aci_l4_l7_service_graph_template" "fw_sg" {
+  tenant_dn                         = data.aci_tenant.tenant1.id
+  name                              = var.fw_sg
+  l4_l7_service_graph_template_type = "cloud"
+}
+
+resource "aci_function_node" "nlb" {
+  l4_l7_service_graph_template_dn     = aci_l4_l7_service_graph_template.fw_sg.id
+  name                                = "fw-nlb"
+  routing_mode                        = "Redirect"
+  relation_vns_rs_node_to_cloud_l_dev = aci_cloud_l4_l7_native_load_balancer.fw_nlb.id
+}
+
+resource "aci_function_node" "pan_fw" {
+  l4_l7_service_graph_template_dn      = aci_l4_l7_service_graph_template.fw_sg.id
+  name                                 = "pan-fw"
+  func_template_type                   = "FW_ROUTED"
+  relation_vns_rs_node_to_cloud_l_dev  = aci_cloud_l4_l7_third_party_device.pa_fw.id
+  l4_l7_device_interface_consumer_name = "trust"
+  l4_l7_device_interface_provider_name = "untrust"
+}
+*/
