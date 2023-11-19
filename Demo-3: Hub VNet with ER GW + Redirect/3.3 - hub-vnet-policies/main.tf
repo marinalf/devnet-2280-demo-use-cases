@@ -70,10 +70,6 @@ resource "aci_cloud_l4_l7_native_load_balancer" "fw_nlb" {
   cloud_l4l7_load_balancer_type          = "network"
 }
 
-/*
-
-Waiting on https://github.com/CiscoDevNet/terraform-provider-aci/issues/1130
-
 # Create Service Graph for FW and NLB
 
 resource "aci_l4_l7_service_graph_template" "fw_sg" {
@@ -81,6 +77,9 @@ resource "aci_l4_l7_service_graph_template" "fw_sg" {
   name                              = var.fw_sg
   l4_l7_service_graph_template_type = "cloud"
 }
+
+/*
+Waiting on https://github.com/CiscoDevNet/terraform-provider-aci/issues/1130
 
 resource "aci_function_node" "nlb" {
   l4_l7_service_graph_template_dn     = aci_l4_l7_service_graph_template.fw_sg.id
