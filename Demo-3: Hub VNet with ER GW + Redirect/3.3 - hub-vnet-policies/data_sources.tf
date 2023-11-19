@@ -27,8 +27,25 @@ data "aci_filter" "ssh_https" {
 }
 
 data "aci_cloud_external_epg" "ext_networks" {
-  cloud_applicationcontainer_dn   = "uni/tn-infra/cloudapp-cloud-infra"
-  name                            = "ext-networks"
-  
+  cloud_applicationcontainer_dn = "uni/tn-infra/cloudapp-cloud-infra"
+  name                          = "ext-networks"
+
+}
+
+# Data Sources used for NLB
+
+data "aci_cloud_context_profile" "hub_vnet" {
+  tenant_dn = data.aci_tenant.infra_tenant.id
+  name      = "ct_ctxprofile_australiaeast" # Hub VNet Cloud Context Profile (overlay-1)
+}
+
+data "aci_cloud_cidr_pool" "hub_services_cidr" {
+  cloud_context_profile_dn = data.aci_cloud_context_profile.hub_vnet.id
+  addr                     = var.hub_services_cidr
+}
+
+data "aci_cloud_subnet" "fw_nlb_subnet" {
+  cloud_cidr_pool_dn = data.aci_cloud_cidr_pool.hub_services_cidr.id
+  ip                 = "12.1.3.0/24"
 }
 
