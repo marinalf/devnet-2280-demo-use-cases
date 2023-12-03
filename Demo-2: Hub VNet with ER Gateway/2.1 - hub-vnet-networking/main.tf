@@ -1,4 +1,4 @@
-# Add Services VRF to host ER and L4-L7 Servies in the Hub VNet
+# Add Services VRF to host ER and L4-L7 Services in the Hub VNet
 
 resource "aci_vrf" "services_vrf" {
   tenant_dn = data.aci_tenant.infra_tenant.id 

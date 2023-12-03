@@ -1,4 +1,4 @@
-# FW Mgmt EPG + Contract to allow SSH/HTTPs acccess
+# FW Mgmt Cloud Endpoint Group + Contract to allow SSH/HTTPs acccess
 
 resource "aci_cloud_epg" "fw_mgmt_epg" {
   name                            = var.fw_mgmt_epg
@@ -25,7 +25,7 @@ resource "aci_contract_subject" "fw_mgmt_access" {
   relation_vz_rs_subj_filt_att = [data.aci_filter.ssh_https.id]
 }
 
-# Associate fw_mgmt_access contract as consumer on existing ext_networks EPG
+# Associate fw_mgmt_access contract as consumer on existing "ext_networks" Cloud Endpoint Group
 
 resource "aci_epg_to_contract" "ext_networks" {
   application_epg_dn = data.aci_cloud_external_epg.ext_networks.id
@@ -77,6 +77,20 @@ resource "aci_l4_l7_service_graph_template" "fw_sg" {
   name                              = var.fw_sg
   l4_l7_service_graph_template_type = "cloud"
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 Waiting on https://github.com/CiscoDevNet/terraform-provider-aci/issues/1130

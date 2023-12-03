@@ -1,21 +1,21 @@
 
 ### VNet Policies ###
 
-# Application Profile for VNet1 EPG
+# Application Profile for VNet1 Cloud Endpoint Group
 
 resource "aci_cloud_applicationcontainer" "vnet1_ap" {
   tenant_dn = data.aci_tenant.tenant1.id
   name      = var.vnet1_ap
 }
 
-# Application Profile for VNet2 EPG
+# Application Profile for VNet2 Cloud Endpoint Group
 
 resource "aci_cloud_applicationcontainer" "vnet2_ap" {
   tenant_dn = data.aci_tenant.tenant1.id
   name      = var.vnet2_ap
 }
 
-# VNet1 EPG
+# VNet1 Cloud Endpoint Group
 
 resource "aci_cloud_epg" "vnet1_epg" {
   name                            = var.vnet1_epg
@@ -32,7 +32,7 @@ resource "aci_cloud_endpoint_selector" "vnet1_epg_selector" {
   match_expression = each.value.expression
 }
 
-# VNet2 EPG
+# VNet2  Cloud Endpoint Group
 
 resource "aci_cloud_epg" "vnet2_epg" {
   name                            = var.vnet2_epg
@@ -62,7 +62,7 @@ resource "aci_contract_subject" "inter_vnet" {
   relation_vz_rs_subj_filt_att = [data.aci_filter.default_filter.id]
 }
 
-# Cloud External EPG for Internet Access (VNet1)
+# Cloud External Endpoint Group for Internet Access (VNet1)
 
 resource "aci_cloud_external_epg" "vnet1_internet" {
   name                            = var.vnet1_internet

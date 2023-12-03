@@ -7,7 +7,7 @@ resource "aci_cloud_applicationcontainer" "services_ap" {
   name      = var.services_ap
 }
 
-# External EPG for ER + Allowed On-Prem Prefixes/Subnets
+# External  Cloud Endpoint Group for ER + Allowed On-Prem Prefixes/Subnets
 
 resource "aci_cloud_external_epg" "er_epg" {
   name                            = var.er_epg
