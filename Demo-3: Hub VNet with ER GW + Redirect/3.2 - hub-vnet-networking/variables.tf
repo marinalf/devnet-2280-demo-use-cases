@@ -42,5 +42,5 @@ variable "fw_subnets" {
 }
 
 variable "hub_region" {
-  default = "australiaeast"
+  default = "uksouth"
 }

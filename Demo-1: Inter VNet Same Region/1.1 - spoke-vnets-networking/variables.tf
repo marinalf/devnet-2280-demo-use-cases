@@ -31,7 +31,7 @@ variable "vnet1_cidr" {
 }
 
 variable "vnet1_region1" {
-  default = "australiaeast"
+  default = "uksouth"
 }
 
 variable "vnet1_subnets" {
@@ -66,7 +66,7 @@ variable "vnet2_cidr" {
 }
 
 variable "vnet2_region1" {
-  default = "australiaeast"
+  default = "uksouth"
 }
 
 variable "vnet2_subnets" {

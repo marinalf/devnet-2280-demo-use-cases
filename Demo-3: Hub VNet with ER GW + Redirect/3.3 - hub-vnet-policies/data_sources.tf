@@ -36,7 +36,7 @@ data "aci_cloud_external_epg" "ext_networks" {
 
 data "aci_cloud_context_profile" "hub_vnet" {
   tenant_dn = data.aci_tenant.infra_tenant.id
-  name      = "ct_ctxprofile_australiaeast" # Hub VNet Cloud Context Profile (overlay-1)
+  name      = "ct_ctxprofile_uksouth" # Hub VNet Cloud Context Profile (overlay-1)
 }
 
 data "aci_cloud_cidr_pool" "hub_services_cidr" {

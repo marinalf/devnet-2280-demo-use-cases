@@ -78,9 +78,22 @@ resource "aci_l4_l7_service_graph_template" "fw_sg" {
   l4_l7_service_graph_template_type = "cloud"
 }
 
+resource "aci_function_node" "nlb" {
+  l4_l7_service_graph_template_dn     = aci_l4_l7_service_graph_template.fw_sg.id
+  name                                = "fw-nlb"
+  func_template_type                  = "CLOUD_NATIVE_LB"
+  routing_mode                        = "Redirect" # No option to set Redirect on consumer and provider connector types
+  relation_vns_rs_node_to_cloud_l_dev = aci_cloud_l4_l7_native_load_balancer.fw_nlb.id
+}
 
-
-
+resource "aci_function_node" "pan_fw" { # Refer to https://github.com/CiscoDevNet/terraform-provider-aci/issues/1130
+  l4_l7_service_graph_template_dn      = aci_l4_l7_service_graph_template.fw_sg.id
+  name                                 = "pan-fw"
+  func_template_type                   = "FW_ROUTED"
+  relation_vns_rs_node_to_cloud_l_dev  = aci_cloud_l4_l7_third_party_device.pa_fw.id
+  l4_l7_device_interface_consumer_name = "trust"
+  l4_l7_device_interface_provider_name = "untrust"
+}
 
 
 

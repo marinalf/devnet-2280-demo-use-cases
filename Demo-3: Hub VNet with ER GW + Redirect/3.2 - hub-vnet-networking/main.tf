@@ -18,7 +18,7 @@ resource "aci_cloud_subnet" "fw_subnets" {
 # Enable Hub VNet Peering
 
 resource "aci_rest_managed" "disable_enable_hub_networking" {
-  dn       = "uni/tn-infra/infranetwork-default/intnetwork-default/provider-azure-region-australiaeast/regiondetail"
+  dn       = "uni/tn-infra/infranetwork-default/intnetwork-default/provider-azure-region-uksouth/regiondetail"
   class_name = "cloudtemplateRegionDetail"
   depends_on = [aci_cloud_subnet.fw_subnets]
   content = {
