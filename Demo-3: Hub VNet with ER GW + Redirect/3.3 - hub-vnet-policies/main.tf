@@ -78,6 +78,14 @@ resource "aci_l4_l7_service_graph_template" "fw_sg" {
   l4_l7_service_graph_template_type = "cloud"
 }
 
+
+
+
+
+
+
+
+/*
 resource "aci_function_node" "nlb" {
   l4_l7_service_graph_template_dn     = aci_l4_l7_service_graph_template.fw_sg.id
   name                                = "fw-nlb"
@@ -95,8 +103,7 @@ resource "aci_function_node" "pan_fw" { # Refer to https://github.com/CiscoDevNe
   l4_l7_device_interface_provider_name = "untrust"
 }
 
-
-
+*/
 
 
 
